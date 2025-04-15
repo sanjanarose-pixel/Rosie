@@ -1,0 +1,14 @@
+.top-box {
+    width: 80%;
+    max-width: 1200px;
+    height: 120px;
+    background-color: rgba(255, 255, 255, 0.8);
+    margin: 40px auto 0 auto; /* <-- 40px from the top */
+    display: flex;
+    align-items: center;
+    justify-content: center; /* optional: centers the content inside */
+    padding: 0 20px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+    box-sizing: border-box;
+    border-radius: 8px; /* optional: gives it rounded corners */
+}

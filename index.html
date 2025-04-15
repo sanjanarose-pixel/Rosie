@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        html, body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-image: url('pink.jpg');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+            background-attachment: fixed; /* Optional: keeps image fixed during scroll */
+        }
+        .box-container {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            padding-top: 100px;
+        }
+
+        .box {
+            width: 200px;
+            height: 150px;
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: transform 0.2s, background-color 0.3s;
+        }
+
+        .box:hover {
+            transform: translateY(-5px);
+            background-color: #ffe0e6;
+        }
+    </style>
+</head>
+    <title>Blog</title>
+</head>
+<body>
+    <div class="top-box">
+        <h1>Muthoot diaries</h1>
+    </div>
+    <div class="box-container">
+        <div class="box" onclick="navigateTo('bio.html')">About Us</div>
+        <div class="box" onclick="navigateTo('activities.html')">Our Life So Far</div>
+        <div class="box" onclick="navigateTo('gallery.html')">Gallery</div>
+    </div>
+    
+    <script>
+        function navigateTo(page) {
+            window.location.href = page;
+        }
+    </script>
+</body>
+</html>

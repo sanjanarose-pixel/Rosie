@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            background-image: url('purple.jpg');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+            background-attachment: fixed; /* Optional: keeps image fixed during scroll */
+        }
+        .gallery-container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr); /* 3 columns */
+            gap: 20px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .gallery-container img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            transition: transform 0.3s;
+        }
+
+        .gallery-container img:hover {
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body>
+    <div class="top-box">
+        <h1>Gallery</h1>
+    </div>
+    <h1 style="text-align: center; color: white;">Our Gallery</h1>
+
+    <div class="gallery-container">
+        <img src="1.jpeg" alt="Photo 1">
+        <img src="2.jpeg" alt="Photo 2">
+        <img src="3.jpeg" alt="Photo 3">
+        <img src="4.jpeg" alt="Photo 4">
+        <img src="5.jpeg" alt="Photo 5">
+        <img src="6.jpeg" alt="Photo 6">
+        <img src="7.jpeg" alt="Photo 7">
+        <img src="8.jpeg" alt="Photo 8">
+        <img src="9.jpeg" alt="Photo 9">
+        <img src="10.jpeg" alt="Photo 10">
+        <img src="11.jpeg" alt="Photo 11">
+        <img src="12.jpeg" alt="Photo 12">
+    </div>
+</body>
+</html>
