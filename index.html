@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <link rel="stylesheet" href="style.css" />
   <title>Muthoot Diaries</title>
 </head>
@@ -11,40 +11,20 @@
     <h1>Muthoot Diaries</h1>
   </div>
 
-  <div class="main-layout">
-    <div class="left-nav">
-      <div class="box" onclick="loadContent('game')">Catch the Heart</div>
-      <div class="box" onclick="loadContent('bio')">About Us</div>
-      <div class="box" onclick="loadContent('gallery')">Gallery</div>
-    </div>
-
-    <div class="right-content" id="mainContent">
-      <h2>Welcome to Muthoot Diaries 💖</h2>
-      <p>Select something from the left to begin!</p>
-    </div>
+  <div class="box-container">
+    <div class="box" onclick="navigateTo('bio.html')">About Us</div>
+    <div class="box" onclick="navigateTo('activities.html')">Our Life So Far</div>
+    <div class="box" onclick="navigateTo('gallery.html')">Gallery</div>
   </div>
+
+  <!-- Heart game container -->
+  <div id="heart" onclick="caughtHeart()">💖</div>
 
   <div id="clock"></div>
 
   <script>
-    function loadContent(type) {
-      const content = document.getElementById("mainContent");
-
-      if (type === "game") {
-        content.innerHTML = `
-          <h2>Catch the 💖!</h2>
-          <div id="heart" onclick="caughtHeart()">💖</div>
-        `;
-        moveHeart();
-      }
-
-      if (type === "bio") {
-        window.location.href = "bio.html";
-      }
-
-      if (type === "gallery") {
-        window.location.href = "gallery.html";
-      }
+    function navigateTo(page) {
+      window.location.href = page;
     }
 
     function caughtHeart() {
@@ -54,10 +34,10 @@
     function moveHeart() {
       const heart = document.getElementById("heart");
       if (!heart) return;
+
       setInterval(() => {
-        const x = Math.random() * (window.innerWidth - 150);
-        const y = Math.random() * (window.innerHeight - 200);
-        heart.style.position = "absolute";
+        const x = Math.random() * (window.innerWidth - 80);
+        const y = Math.random() * (window.innerHeight - 120);
         heart.style.left = `${x}px`;
         heart.style.top = `${y}px`;
       }, 1200);
@@ -68,8 +48,10 @@
       const time = now.toLocaleTimeString();
       document.getElementById("clock").textContent = "Current Time: " + time;
     }
+
     setInterval(updateClock, 1000);
     updateClock();
+    moveHeart();
   </script>
 </body>
 </html>
