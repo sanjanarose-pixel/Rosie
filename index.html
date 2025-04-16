@@ -5,10 +5,82 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <link rel="stylesheet" href="style.css" />
   <title>Muthoot Diaries</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      transition: background-color 0.3s ease;
+    }
+
+    .top-box {
+      background-color: #ffd1dc;
+      padding: 20px;
+      text-align: center;
+    }
+
+    .box-container {
+      display: flex;
+      justify-content: center;
+      margin-top: 30px;
+    }
+
+    .box {
+      background-color: #f0f0f0;
+      padding: 20px;
+      margin: 10px;
+      cursor: pointer;
+      border-radius: 10px;
+      transition: background 0.3s;
+    }
+
+    .box:hover {
+      background-color: #ffccdd;
+    }
+
+    #heart {
+      position: absolute;
+      font-size: 30px;
+      cursor: pointer;
+      transition: all 0.5s ease;
+    }
+
+    #clock {
+      position: fixed;
+      top: 10px;
+      right: 20px;
+      font-size: 18px;
+    }
+
+    #colorSelector {
+      position: fixed;
+      top: 50%;
+      right: 20px;
+      transform: translateY(-50%);
+    }
+
+    #colorSelector select {
+      padding: 10px;
+      font-size: 16px;
+      border-radius: 8px;
+    }
+
+    #contact {
+      text-align: center;
+      margin-top: 60px;
+      padding: 30px;
+      background-color: #ffe6f0;
+    }
+
+    #contact a {
+      color: #d63384;
+      text-decoration: none;
+      font-weight: bold;
+    }
+  </style>
 </head>
 <body>
   <div class="top-box">
-    <h1>Muthoot Diaries-Five girls. One campus. Endless chaos and memories.</h1>
+    <h1>Muthoot Diaries - Five girls. One campus. Endless chaos and memories.</h1>
   </div>
 
   <div class="box-container">
@@ -20,8 +92,28 @@
   <!-- Heart game container -->
   <div id="heart" onclick="caughtHeart()">💖</div>
 
+  <!-- Clock -->
   <div id="clock"></div>
 
+  <!-- Background Color Selector -->
+  <div id="colorSelector">
+    <select onchange="changeBackground(this.value)">
+      <option value="default">Default</option>
+      <option value="pink">Pink</option>
+      <option value="red">Red</option>
+      <option value="blue">Blue</option>
+      <option value="green">Green</option>
+    </select>
+  </div>
+
+  <!-- Contact Section -->
+  <div id="contact">
+    <h2>Contact Me 💌</h2>
+    <p>Email: <a href="mailto:24ad364@mgits.ac.in">24ad364@mgits.ac.in</a></p>
+    <p>Instagram: <a href="https://instagram.com/sanju_berry654" target="_blank">@sanju_berry654</a></p>
+  </div>
+
+  <!-- JS Scripts -->
   <script>
     function navigateTo(page) {
       window.location.href = page;
@@ -49,9 +141,38 @@
       document.getElementById("clock").textContent = "Current Time: " + time;
     }
 
+    function changeBackground(color) {
+      const body = document.body;
+      switch (color) {
+        case 'pink':
+          body.style.backgroundColor = '#ffe6f0';
+          break;
+        case 'red':
+          body.style.backgroundColor = '#ffcccc';
+          break;
+        case 'blue':
+          body.style.backgroundColor = '#cce5ff';
+          break;
+        case 'green':
+          body.style.backgroundColor = '#ccffcc';
+          break;
+        default:
+          body.style.backgroundColor = 'white';
+      }
+    }
+
+    function showWelcomePopup() {
+      if (!localStorage.getItem("visited")) {
+        alert("🌸 Welcome to my website! 💖");
+        localStorage.setItem("visited", "true");
+      }
+    }
+
+    // Init
     setInterval(updateClock, 1000);
     updateClock();
     moveHeart();
+    showWelcomePopup();
   </script>
 </body>
 </html>
