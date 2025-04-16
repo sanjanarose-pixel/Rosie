@@ -3,8 +3,10 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <link rel="stylesheet" href="style.css" />
   <title>Muthoot Diaries</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
   <style>
     #colorSelector {
       position: fixed;
@@ -38,6 +40,7 @@
       margin-right: auto;
       border-radius: 10px;
       box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+      font-size: 16px;
     }
 
     #contact h3 {
@@ -87,16 +90,21 @@
   <div id="contact">
     <h3>Contact Me 💌</h3>
     <p>Email: <a href="mailto:24ad364@mgits.ac.in">24ad364@mgits.ac.in</a></p>
-    <p>Instagram: <a href="https://instagram.com/aishwaryaraibachchan_arb" target="_blank">@therealSanjana</a></p>
+    <p>Instagram: <a href="https://instagram.com/sanju_berry654" target="_blank">@sanju_berry654</a></p>
   </div>
 
-  <!-- JavaScript -->
+  <!-- Audio (Optional: for heart click sound) -->
+  <!-- <audio id="heartSound" src="heart-sound.mp3" preload="auto"></audio> -->
+
   <script>
     function navigateTo(page) {
       window.location.href = page;
     }
 
     function caughtHeart() {
+      // let sound = document.getElementById("heartSound");
+      // sound.currentTime = 0;
+      // sound.play();
       alert("💘 You caught it!");
     }
 
@@ -119,8 +127,15 @@
     }
 
     function showWelcomePopup() {
+      const resetVisit = false; // change to true to reset popup behavior
+      if (resetVisit) {
+        localStorage.removeItem("visited");
+      }
+
       if (!localStorage.getItem("visited")) {
-        alert("🌸 Welcome to my website! 💖");
+        setTimeout(() => {
+          alert("🌸 Welcome to my website! 💖");
+        }, 300); // Delay to let the page load a bit
         localStorage.setItem("visited", "true");
       }
     }
@@ -149,9 +164,8 @@
       }
     }
 
-    document.getElementById("bgSelect").addEventListener("change", changeBackground);
-
     // Init
+    document.getElementById("bgSelect").addEventListener("change", changeBackground);
     setInterval(updateClock, 1000);
     updateClock();
     moveHeart();
