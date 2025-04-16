@@ -2,7 +2,8 @@ html, body {
   height: 100%;
   margin: 0;
   padding: 0;
-  font-family: 'Segoe UI', sans-serif;
+  font-family: 'Poppins', sans-serif;
+  font-size: 18px;
 }
 
 body {
@@ -11,6 +12,8 @@ body {
   background-repeat: no-repeat;
   background-position: center;
   background-attachment: fixed;
+  color: #333;
+  line-height: 1.8;
 }
 
 .top-box {
@@ -26,6 +29,7 @@ body {
   box-shadow: 0 2px 8px rgba(0,0,0,0.2);
   box-sizing: border-box;
   border-radius: 8px;
+  text-align: center;
 }
 
 .box-container {
@@ -47,7 +51,8 @@ body {
   cursor: pointer;
   transition: transform 0.2s, background-color 0.3s;
   animation: float 3s ease-in-out infinite;
-  font-weight: bold;
+  font-weight: 600;
+  font-size: 1rem;
 }
 
 .box:hover {
