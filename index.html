@@ -6,69 +6,46 @@
   <link rel="stylesheet" href="style.css" />
   <title>Muthoot Diaries</title>
   <style>
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      transition: background-color 0.3s ease;
-    }
-
-    .top-box {
-      background-color: #ffd1dc;
-      padding: 20px;
-      text-align: center;
-    }
-
-    .box-container {
-      display: flex;
-      justify-content: center;
-      margin-top: 30px;
-    }
-
-    .box {
-      background-color: #f0f0f0;
-      padding: 20px;
-      margin: 10px;
-      cursor: pointer;
-      border-radius: 10px;
-      transition: background 0.3s;
-    }
-
-    .box:hover {
-      background-color: #ffccdd;
-    }
-
-    #heart {
-      position: absolute;
-      font-size: 30px;
-      cursor: pointer;
-      transition: all 0.5s ease;
-    }
-
-    #clock {
-      position: fixed;
-      top: 10px;
-      right: 20px;
-      font-size: 18px;
-    }
-
     #colorSelector {
       position: fixed;
       top: 50%;
       right: 20px;
       transform: translateY(-50%);
+      background: #fff0f5;
+      padding: 10px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px #ffd6e8;
+      z-index: 99;
     }
 
     #colorSelector select {
-      padding: 10px;
-      font-size: 16px;
+      padding: 8px;
+      font-size: 14px;
       border-radius: 8px;
+      border: none;
+      background-color: #ffe6f0;
+      cursor: pointer;
     }
 
     #contact {
       text-align: center;
-      margin-top: 60px;
-      padding: 30px;
-      background-color: #ffe6f0;
+      margin-top: 50px;
+      padding: 20px;
+      background-color: rgba(255, 255, 255, 0.8);
+      width: 90%;
+      max-width: 800px;
+      margin-left: auto;
+      margin-right: auto;
+      border-radius: 10px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+    }
+
+    #contact h3 {
+      margin-bottom: 10px;
+    }
+
+    #contact p {
+      margin: 5px;
     }
 
     #contact a {
@@ -89,15 +66,15 @@
     <div class="box" onclick="navigateTo('gallery.html')">Gallery</div>
   </div>
 
-  <!-- Heart game container -->
+  <!-- Floating Heart -->
   <div id="heart" onclick="caughtHeart()">💖</div>
 
   <!-- Clock -->
   <div id="clock"></div>
 
-  <!-- Background Color Selector -->
+  <!-- Background Color Dropdown -->
   <div id="colorSelector">
-    <select onchange="changeBackground(this.value)">
+    <select id="bgSelect">
       <option value="default">Default</option>
       <option value="pink">Pink</option>
       <option value="red">Red</option>
@@ -108,12 +85,12 @@
 
   <!-- Contact Section -->
   <div id="contact">
-    <h2>Contact Me 💌</h2>
+    <h3>Contact Me 💌</h3>
     <p>Email: <a href="mailto:24ad364@mgits.ac.in">24ad364@mgits.ac.in</a></p>
     <p>Instagram: <a href="https://instagram.com/sanju_berry654" target="_blank">@sanju_berry654</a></p>
   </div>
 
-  <!-- JS Scripts -->
+  <!-- JavaScript -->
   <script>
     function navigateTo(page) {
       window.location.href = page;
@@ -141,32 +118,38 @@
       document.getElementById("clock").textContent = "Current Time: " + time;
     }
 
-    function changeBackground(color) {
-      const body = document.body;
-      switch (color) {
-        case 'pink':
-          body.style.backgroundColor = '#ffe6f0';
-          break;
-        case 'red':
-          body.style.backgroundColor = '#ffcccc';
-          break;
-        case 'blue':
-          body.style.backgroundColor = '#cce5ff';
-          break;
-        case 'green':
-          body.style.backgroundColor = '#ccffcc';
-          break;
-        default:
-          body.style.backgroundColor = 'white';
-      }
-    }
-
     function showWelcomePopup() {
       if (!localStorage.getItem("visited")) {
         alert("🌸 Welcome to my website! 💖");
         localStorage.setItem("visited", "true");
       }
     }
+
+    function changeBackground() {
+      const value = document.getElementById("bgSelect").value;
+      const body = document.body;
+      if (value === "default") {
+        body.style.backgroundImage = "url('pink.jpg')";
+      } else {
+        body.style.backgroundImage = "none";
+        switch (value) {
+          case "pink":
+            body.style.backgroundColor = "#ffe6f0";
+            break;
+          case "red":
+            body.style.backgroundColor = "#ffcccc";
+            break;
+          case "blue":
+            body.style.backgroundColor = "#cce5ff";
+            break;
+          case "green":
+            body.style.backgroundColor = "#ccffcc";
+            break;
+        }
+      }
+    }
+
+    document.getElementById("bgSelect").addEventListener("change", changeBackground);
 
     // Init
     setInterval(updateClock, 1000);
